@@ -9,9 +9,13 @@ public class PlayerControl : MonoBehaviour {
 	private float jumpforce = 40f;
     public GameObject checkpoint1,checkpoint2,checkpoint3;
     public Transform spawn,spawn1,spawn2,spawn3;
-	public GameObject pesawat1,pesawat2,pesawat3,pesawat4;
+	public GameObject pesawat1,pesawat2,pesawat3;
+	public GameObject text1,text2,text3;
     private bool cp1 = false,cp2=false,cp3=false;
 	void Start () {
+		text1.SetActive(false);
+		text2.SetActive(false);
+		text3.SetActive(false);
 		Time.timeScale=1;
 		rb = GetComponent<Rigidbody2D>();
     }
@@ -33,12 +37,17 @@ public class PlayerControl : MonoBehaviour {
 		}
 
 	}
-	 void OnCollisionEnter2D(Collision2D coll) {
+
+	
+	void OnCollisionEnter2D(Collision2D coll) {
         if (coll.gameObject.tag=="comet")
         {
             Die();
         }
-        if(coll.gameObject.tag == "checkpoint1")
+       
+    }
+	void OnTriggerEnter2D(Collider2D coll) {
+		 if(coll.gameObject.tag == "checkpoint1")
         {
             cp1 = true;
         }
@@ -51,8 +60,14 @@ public class PlayerControl : MonoBehaviour {
 			cp2=false;
 			cp3=true;
 		}
-    }
-	
+		 if(coll.gameObject.tag == "bumi")
+        {
+            text1.SetActive(true);
+			text2.SetActive(true);
+			text3.SetActive(true);
+			Time.timeScale=0;
+        }
+	}
 	void Die(){
         if (cp1 == true)
         {
@@ -65,8 +80,7 @@ public class PlayerControl : MonoBehaviour {
 			transform.position = spawn3.position;
 			pesawat1.transform.position=new Vector2(25,pesawat1.transform.position.y);
 			pesawat2.transform.position=new Vector2(25,pesawat2.transform.position.y);
-			pesawat3.transform.position=new Vector2(25,pesawat3.transform.position.y);
-			pesawat4.transform.position=new Vector2(25,pesawat4.transform.position.y);
+			pesawat3.transform.position=new Vector2(-20,pesawat3.transform.position.y);
 		}
         if(transform.position.y<checkpoint1.transform.position.y){
 			transform.position = spawn.position;
