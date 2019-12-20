@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ManagerGame : MonoBehaviour {
+public class GameManage : MonoBehaviour {
 
 	// Use this for initialization
 	public GameObject panelPause;
@@ -25,5 +25,7 @@ public class ManagerGame : MonoBehaviour {
 	public void paralax(){
 		Application.LoadLevel(1);
 	}
-
+	public void OnPlay(){
+		SceneManager.LoadScene("Main");
+	}
 }
