@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class TimerScript : MonoBehaviour {
 	Image timebar;
 	public float maxTime = 5f;
-	public GameObject text;
+	public GameObject text,text2;
 	float timeLeft;
 	// Use this for initialization
 	void Start () {
@@ -20,6 +20,7 @@ public class TimerScript : MonoBehaviour {
 			timebar.fillAmount = timeLeft/maxTime;
 		}else{
 			text.SetActive(true);
+			text2.SetActive(true);
 			Time.timeScale=0;
 		}
 	}

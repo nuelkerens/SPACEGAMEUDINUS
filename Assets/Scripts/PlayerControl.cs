@@ -10,7 +10,7 @@ public class PlayerControl : MonoBehaviour {
     public GameObject checkpoint1,checkpoint2,checkpoint3;
     public Transform spawn,spawn1,spawn2,spawn3;
 	public GameObject pesawat1,pesawat2,pesawat3;
-	public GameObject text1,text2,text3;
+	public GameObject text1,text2,text3,text4;
 	public GameObject api;
 
 	
@@ -21,32 +21,26 @@ public class PlayerControl : MonoBehaviour {
 	void Start () {
 		Time.timeScale=1;
 		rb = GetComponent<Rigidbody2D>();
-	//	api.SetActive(false);
     }
 	
 	// Update is called once per frame
 	void Update () {
 		api.SetActive(false);
 		
-		if (Input.GetKey(KeyCode.Space)) {
-			
-			
+		if (Input.GetKey(KeyCode.Space)) {		
 			rb.AddForce(new Vector2(0f,jumpforce));		
 			api.SetActive(true); 		
 		}
-		
-			
-		
-         if (transform.position.y > checkpoint1.transform.position.y + 2)
-		
-        {
-			 
-            checkpoint1.GetComponent<BoxCollider2D>().enabled = true;
-			
+		if(Input.GetKey(KeyCode.R)){
+			Scene scene = SceneManager.GetActiveScene(); 
+			SceneManager.LoadScene(scene.name);
+		}			
+         if (transform.position.y > checkpoint1.transform.position.y + 2)		
+        {			 
+           checkpoint1.GetComponent<BoxCollider2D>().enabled = true;			
         }
 		if (transform.position.y > checkpoint2.transform.position.y +2){
-			checkpoint2.GetComponent<BoxCollider2D>().enabled = true;
-			
+			checkpoint2.GetComponent<BoxCollider2D>().enabled = true;			
 		}
 		if (transform.position.y > checkpoint3.transform.position.y +2){
 			checkpoint3.GetComponent<BoxCollider2D>().enabled = true;
@@ -88,6 +82,7 @@ public class PlayerControl : MonoBehaviour {
             text1.SetActive(true);
 			text2.SetActive(true);
 			text3.SetActive(true);
+			text4.SetActive(true);
 			Time.timeScale=0;
         }
 	}

@@ -32,7 +32,7 @@ public class ManagerGame : MonoBehaviour {
 	}
 
 	public void OnSetting(){
-	SceneManager.LoadScene("Setting");
+	SceneManager.LoadScene("Credits");
 		SoundManagerScript2.PlaySound ("klik");
 	}
 	public void OnHelp(){

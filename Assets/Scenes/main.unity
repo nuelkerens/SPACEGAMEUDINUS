@@ -1558,7 +1558,10 @@ MonoBehaviour:
   pesawat1: {fileID: 0}
   pesawat2: {fileID: 0}
   pesawat3: {fileID: 0}
-  pesawat4: {fileID: 0}
+  text1: {fileID: 0}
+  text2: {fileID: 0}
+  text3: {fileID: 0}
+  api: {fileID: 0}
 --- !u!212 &1236102918
 SpriteRenderer:
   m_ObjectHideFlags: 0
