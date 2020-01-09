@@ -5,6 +5,10 @@ using UnityEngine;
 public class tabrak : MonoBehaviour {
 
 
+	//Rigidbody2D  rb;
+
+	//float dirX;
+	//[SerializeField]
 	public float moveSpeed ;
 
 	// Use this for initialization
@@ -13,28 +17,35 @@ public class tabrak : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-		void OnTriggerEnter2D (Collider2D col)   // jika masuk death zone 
+	void OnTriggerEnter2D (Collider2D col)   // jika masuk death zone 
 	{
-		if (col.gameObject.name.Equals ("player")){
-			GetComponent<Rigidbody2D>().velocity = Vector2.left * moveSpeed;
-		}
-
+		if (col.gameObject.name.Equals ("player"))
+			 // rb.isKinematic = false;
+			// dirX = Input.GetAxis ("Horizontal") * moveSpeed * Time.deltaTime;
+	//	transform.position = new Vector2 (transform.position.x + dirX, transform.position.y);
+	transform.position = new Vector3(transform.position.x-moveSpeed*Time.deltaTime,transform.position.y);
+	  //transform.position = new Vector2(transform.position.x+moveSpeed*Time.deltaTime,transform.position.y);
 	}
-	
+
 	void OnTriggerStay2D (Collider2D col) // jika ada di dalam death zone 
 	{
-		if (col.gameObject.name.Equals ("player")){
-			GetComponent<Rigidbody2D>().velocity = Vector2.left * moveSpeed;
-		}
-		
+		if (col.gameObject.name.Equals ("player"))
+			 // rb.isKinematic = false;
+			// dirX = Input.GetAxis ("Horizontal") * moveSpeed * Time.deltaTime;
+	//	transform.position = new Vector2 (transform.position.x + dirX, transform.position.y);
+	transform.position = new Vector3(transform.position.x-moveSpeed*Time.deltaTime,transform.position.y);
+	  //transform.position = new Vector2(transform.position.x+moveSpeed*Time.deltaTime,transform.position.y);
 	}
-
 	void OnTriggerExit2D (Collider2D col) // jika keluar death zone 
 	{
-		if (col.gameObject.name.Equals ("player")){
-			GetComponent<Rigidbody2D>().velocity = Vector2.left * moveSpeed;
-		}
+		if (col.gameObject.name.Equals ("player"))
+			 // rb.isKinematic = false;
+			// dirX = Input.GetAxis ("Horizontal") * moveSpeed * Time.deltaTime;
+	//	transform.position = new Vector2 (transform.position.x + dirX, transform.position.y);
+	transform.position = new Vector3(transform.position.x-moveSpeed*Time.deltaTime,transform.position.y);
+	  //transform.position = new Vector2(transform.position.x+moveSpeed*Time.deltaTime,transform.position.y);
 	}
+
 	//void OnCollisionEnter2D (Collision2D col)
 	//{
 	//	if (col.gameObject.name.Equals ("player"))

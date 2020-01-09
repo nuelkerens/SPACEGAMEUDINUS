@@ -11,30 +11,49 @@ public class PlayerControl : MonoBehaviour {
     public Transform spawn,spawn1,spawn2,spawn3;
 	public GameObject pesawat1,pesawat2,pesawat3;
 	public GameObject text1,text2,text3;
+	public GameObject api;
+
+	
+	
+
     private bool cp1 = false,cp2=false,cp3=false;
+	
 	void Start () {
-		text1.SetActive(false);
-		text2.SetActive(false);
-		text3.SetActive(false);
 		Time.timeScale=1;
 		rb = GetComponent<Rigidbody2D>();
+	//	api.SetActive(false);
     }
 	
 	// Update is called once per frame
 	void Update () {
+		api.SetActive(false);
+		
 		if (Input.GetKey(KeyCode.Space)) {
+			
+			
 			rb.AddForce(new Vector2(0f,jumpforce));		
+			api.SetActive(true); 		
 		}
-        if (transform.position.y > checkpoint1.transform.position.y + 2)
+		
+			
+		
+         if (transform.position.y > checkpoint1.transform.position.y + 2)
+		
         {
+			 
             checkpoint1.GetComponent<BoxCollider2D>().enabled = true;
+			
         }
 		if (transform.position.y > checkpoint2.transform.position.y +2){
 			checkpoint2.GetComponent<BoxCollider2D>().enabled = true;
+			
 		}
 		if (transform.position.y > checkpoint3.transform.position.y +2){
 			checkpoint3.GetComponent<BoxCollider2D>().enabled = true;
+			
 		}
+
+	//	
 
 	}
 
@@ -42,11 +61,15 @@ public class PlayerControl : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D coll) {
         if (coll.gameObject.tag=="comet")
         {
+			SoundManagerScript2.PlaySound ("mati");
             Die();
+			api.SetActive(false);
+			
         }
        
     }
 	void OnTriggerEnter2D(Collider2D coll) {
+		
 		 if(coll.gameObject.tag == "checkpoint1")
         {
             cp1 = true;
@@ -69,6 +92,7 @@ public class PlayerControl : MonoBehaviour {
         }
 	}
 	void Die(){
+		
         if (cp1 == true)
         {
             transform.position = spawn1.position;

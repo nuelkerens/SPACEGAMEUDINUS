@@ -9,7 +9,6 @@ public class TimerScript : MonoBehaviour {
 	float timeLeft;
 	// Use this for initialization
 	void Start () {
-		text.SetActive(false);
 		timebar = GetComponent<Image>();
 		timeLeft = maxTime;
 	}
